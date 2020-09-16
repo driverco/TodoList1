@@ -2,4 +2,7 @@
     <string name="app_name">WRC TodoList</string>
     <string name="appTitle">WRC ToDo List</string>
     <string name="logoContent">logo</string>
+    <string name="addTodoHint">Write your new task</string>
+    <string name="add_todo">addTodo</string>
+    <string name="splash_logo">splash_logo</string>
 </resources>

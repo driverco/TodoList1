@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/titlebar_app"
+        layout="@layout/title_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,14 +23,15 @@
 
         <EditText
             android:id="@+id/todoToAdd"
-            android:layout_width="254dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="4dp"
             android:layout_weight="2"
             android:ems="10"
-            android:hint="Write your new task"
-            android:inputType="text" />
+            android:hint="@string/addTodoHint"
+            android:inputType="text"
+            android:autofillHints="" />
 
         <ImageButton
             android:id="@+id/addButton"
@@ -44,7 +45,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/todoToAdd" />
+            app:layout_constraintStart_toEndOf="@+id/todoToAdd"
+            android:contentDescription="@string/add_todo" />
 
     </LinearLayout>
 

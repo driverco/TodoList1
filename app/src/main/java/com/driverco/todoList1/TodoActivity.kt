@@ -20,14 +20,14 @@ class TodoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_todo)
         todoAdapt = TodoAdapter(this, R.layout.todo_task, todoArray)
         todoListView.adapter = todoAdapt
-        readTodos()
-        addButton.setOnClickListener { _ -> addTodo() }
+        readTasks()
+        addButton.setOnClickListener { addTodo() }
         todoListView.setOnItemLongClickListener { parent: AdapterView<*>, view: View, position: Int, id: Long ->
             //Toast.makeText(this, "position {$position}", Toast.LENGTH_SHORT).show()
             val removed = todoArray[position]
             todoArray.removeAt(position)
             todoAdapt.notifyDataSetChanged()
-            writeTodos()
+            writeTasks()
             Toast.makeText(this, "todo: \"$removed\" deleted", Toast.LENGTH_SHORT).show()
             return@setOnItemLongClickListener true
         }
@@ -35,7 +35,7 @@ class TodoActivity : AppCompatActivity() {
         todoToAdd.setOnKeyListener(object : View.OnKeyListener {
             override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
                 // If the event is a key-down event on the "enter" button
-                if (event.getAction() === KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                     addTodo()
                     return true
                 }
@@ -45,18 +45,18 @@ class TodoActivity : AppCompatActivity() {
     }
 
     private fun addTodo() {
-        val newTodo = todoToAdd.text.toString();
+        val newTodo = todoToAdd.text.toString()
         if (newTodo.isNotEmpty()) {
-            todoAdapt.add(newTodo);
-            todoToAdd.setText("");
-            writeTodos()
+            todoAdapt.add(newTodo)
+            todoToAdd.setText("")
+            writeTasks()
             Toast.makeText(this, "todo: \"$newTodo\" added", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun readTodos() {
+    private fun readTasks() {
         try {
-            val input = Scanner(openFileInput("todos.txt"))
+            val input = Scanner(openFileInput("tasks.txt"))
             while (input.hasNextLine()) {
                 todoAdapt.add(input.nextLine())
             }
@@ -66,8 +66,8 @@ class TodoActivity : AppCompatActivity() {
         }
     }
 
-    private fun writeTodos() {
-        val output = PrintStream(openFileOutput("todos.txt", Activity.MODE_PRIVATE))
+    private fun writeTasks() {
+        val output = PrintStream(openFileOutput("tasks.txt", Activity.MODE_PRIVATE))
         for (todo in todoArray)
             output.println(todo)
         output.close()
