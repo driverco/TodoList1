@@ -5,4 +5,5 @@
     <string name="addTodoHint">Write your new task</string>
     <string name="add_todo">addTodo</string>
     <string name="splash_logo">splash_logo</string>
+    <string name="long_click_remove">Use long click on any item to remove it</string>
 </resources>
