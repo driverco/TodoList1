@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WRC TodoList</string>
+    <string name="appTitle">WRC ToDo List</string>
+    <string name="logoContent">logo</string>
 </resources>
